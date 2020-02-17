@@ -1,0 +1,121 @@
+@mixin user-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox and radio button */
+
+@mixin hide-input() {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+body {
+  font-family: monospace;
+  background: #232526;
+  background: -webkit-linear-gradient(to top, #414345, #232526);
+  background: linear-gradient(to top, #414345, #232526);
+}
+
+.drum-pad {
+  width: 100%;
+  display: inline-block;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 2.5em;
+  box-sizing: border-box;
+  height: 75px;
+}
+
+.drum-pad:hover {
+  cursor: pointer;
+}
+
+.padBank {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 15px;
+}
+
+#drum-machine {
+  background-color: #000000;
+  background-image: linear-gradient(360deg, #000000, #7f8c8d);
+  display: inline-block;
+  padding: 30px;
+  border: 5px solid black;
+  @include user-select();
+}
+
+#display {
+  background-color: snow;
+  max-width: 300px;
+  padding: 10px;
+  height: 30px;
+  font-size: 1.8em;
+  text-align: center;
+  font-weight: bold;
+  margin: 15px auto;
+  border: 2px solid black;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+}
+
+.displayDiv {
+  text-align: center;
+}
+
+.switchbutton {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5em;
+  @include user-select();
+
+  input {
+    @include hide-input();
+  }
+
+  i {
+    font-size: 2em;
+  }
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.musicSelect {
+  margin: 30px 0;
+
+  span {
+    padding: 8px 15px;
+    border: 2px solid #7bc74d;
+    background: rgb(88, 88, 88);
+    font-size: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .musicOne {
+    border-radius: 20px 0 0 20px;
+  }
+
+  .musicTwo {
+    border-radius: 0 20px 20px 0;
+  }
+  input {
+    @include hide-input();
+  }
+}
